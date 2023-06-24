@@ -9,7 +9,7 @@ class ENEMYSPACESHIP{
         height:100
        }
        this.velocity={
-        x:1,y:0
+        x:0.3,y:0
        }
        this.color="red"
        this.health=1000

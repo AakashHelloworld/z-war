@@ -65,7 +65,7 @@ const key = {
         pressed: false
     }
 }
-const gravity=1.9
+const gravity=1
 
 const ground={
     x:-100,
@@ -81,6 +81,9 @@ const enemy=new ENEMYSPACESHIP()
 const player = new Player();
 const animate=()=>{
     window.requestAnimationFrame(animate)
+    c.fillStyle="white"
+    c.clearRect(0,0,canvas.width,canvas.height)
+    c.fillRect(0,0,canvas.width,canvas.height)
     // ground
     c.fillStyle="green"
     c.fillRect(
@@ -89,20 +92,16 @@ const animate=()=>{
         ground.width,
         ground.height
     )
-    // if(buffer%counter==0){
-        c.clearRect(0,0,canvas.width,canvas.height)
-        c.fillStyle="white"
-        c.fillRect(0,0,canvas.width,canvas.height)
-        enemy.draw()
-        enemy.update()
-        // capsules iteration
 
-        capsuleArray.forEach(capsule=>{
-            capsule.draw()
-            capsule.update()
-        })
-        // counter=1
-    // }
+    enemy.draw()
+    enemy.update()
+    // capsules iteration
+
+    capsuleArray.forEach(capsule=>{
+        capsule.draw()
+        capsule.update()
+    })
+
     player.draw()
 
     player.update()
