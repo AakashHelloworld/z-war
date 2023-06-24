@@ -10,8 +10,8 @@ class Player {
         x: 0,
         y: 0,
       }
-      this.width = 50;
-      this.height =100;
+      this.width = 45;
+      this.height =70;
   
       this.sides = {
         bottom: this.position.y + this.height,
@@ -36,7 +36,7 @@ class Player {
       this.position.x += this.velocity.x
       this.position.y += this.velocity.y
       this.sides.bottom =  this.position.y + this.height;
-      if(this.sides.bottom + this.velocity.y <= canvasH){
+      if(this.sides.bottom + this.velocity.y <= ground.y){
         this.velocity.y += this.gravity ;
     
       }else{
