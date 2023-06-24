@@ -8,11 +8,14 @@ class ENEMYSPACESHIP{
         width:500,
         height:100
        }
+       this.velocity={
+        x:1,y:0
+       }
        this.color="red"
        this.health=1000
        this.gravity=4
-       this.nextCapsuleTimer=Math.floor(Math.random()*20)+20
-       this.counter=0
+       this.nextCapsuleTimer=Math.floor(Math.random()*100)+200
+       this.capsuleThrowCounter=0
     }
     draw(){
         // enemy spaceShip
@@ -33,19 +36,20 @@ class ENEMYSPACESHIP{
         )
     }
     update(){
-        // enemy spaceship logic
-        if(this.counter!=this.nextCapsuleTimer){
-            this.counter+=1
+        this.position.x+=this.velocity.x
+        if(this.capsuleThrowCounter!=this.nextCapsuleTimer){
+            this.capsuleThrowCounter+=1
         }else{
             // when the time comes
-            this.nextCapsuleTimer=Math.floor(Math.random()*20)+20
-            this.counter=0
+            this.velocity.x=-(this.velocity.x)
+            this.nextCapsuleTimer=Math.floor(Math.random()*100)+300
+            this.capsuleThrowCounter=0
             this.throwCapsules()
         }
     }
     throwCapsules(){
         capsuleArray.push(new Capsule({
-            velocity:Math.floor(Math.random()*20)+2,
+            velocity:Math.floor(Math.random()*7)+2,
             projectionAngle: -Math.floor(Math.random()*180),
             position:{
                 x:this.position.x+this.size.width/2,
