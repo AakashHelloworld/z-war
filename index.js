@@ -48,8 +48,8 @@
 const canvas=document.querySelector("#canvas")
 const c =canvas.getContext("2d")
 
-const canvasW=document.querySelector(".main").getBoundingClientRect().width
-const canvasH=document.querySelector(".main").getBoundingClientRect().height
+const canvasW=document.querySelector(".main").getBoundingClientRect().width-20
+const canvasH=document.querySelector(".main").getBoundingClientRect().height-20
 
 canvas.width=canvasW
 canvas.height=canvasH
@@ -65,7 +65,7 @@ const key = {
         pressed: false
     }
 }
-const gravity=1
+const gravity=0.6
 
 const ground={
     x:-100,
@@ -77,6 +77,7 @@ const ground={
 
 
 const capsuleArray=[]
+const zombieArray=[]
 const enemy=new ENEMYSPACESHIP()
 const player = new Player();
 const animate=()=>{
@@ -100,6 +101,10 @@ const animate=()=>{
     capsuleArray.forEach(capsule=>{
         capsule.draw()
         capsule.update()
+    })
+    zombieArray.forEach(zombie=>{
+        zombie.draw()
+        zombie.update()
     })
 
     player.draw()

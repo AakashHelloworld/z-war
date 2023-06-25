@@ -13,9 +13,9 @@ class ENEMYSPACESHIP{
        }
        this.color="red"
        this.health=1000
-       this.gravity=4
        this.nextCapsuleTimer=Math.floor(Math.random()*100)+200
        this.capsuleThrowCounter=0
+       this.noOfCapsuleThrown=0
     }
     draw(){
         // enemy spaceShip
@@ -49,12 +49,14 @@ class ENEMYSPACESHIP{
     }
     throwCapsules(){
         capsuleArray.push(new Capsule({
-            velocity:Math.floor(Math.random()*7)+2,
+            velocity:Math.floor(Math.random()*3)+2,
             projectionAngle: -Math.floor(Math.random()*180),
             position:{
                 x:this.position.x+this.size.width/2,
                 y:50
-            }
+            },
+            id:this.noOfCapsuleThrown+1
         }))
+        this.noOfCapsuleThrown+=1
     }
 }
