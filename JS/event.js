@@ -1,15 +1,15 @@
 
 
 window.addEventListener('keyup', (event)=>{
-    console.log(event.key)
+    // console.log(event.key)
     switch(event.key){  
         case 'ArrowLeft':
             key.ArrowLeft.pressed = false
-            console.log(key.ArrowLeft.pressed)
+            // console.log(key.ArrowLeft.pressed)
             break
         case 'ArrowRight':
             key.ArrowRight.pressed = false
-            console.log(key.ArrowRight.pressed)
+            // console.log(key.ArrowRight.pressed)
             break
         case 's':
                 player.shoot();
@@ -19,7 +19,7 @@ window.addEventListener('keyup', (event)=>{
 })
 
 window.addEventListener('keydown', (event)=>{
-    console.log(event.key)
+    // console.log(event.key)
     switch(event.key){
         case ' ':
             if(player.velocity.y ==0 ){

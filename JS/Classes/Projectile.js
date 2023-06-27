@@ -2,7 +2,7 @@ class Projectile {
     constructor(x, y, direction) {
       this.position = { x: x, y: y };
       this.direction = direction;
-      this.speed = 5;
+      this.speed = 10;
     }
   
     update() {
