@@ -35,7 +35,6 @@ window.addEventListener('keydown', (event)=>{
         case 'ArrowUp':
             player.facingDirection = 'up'
        
-       
     }
 
 })

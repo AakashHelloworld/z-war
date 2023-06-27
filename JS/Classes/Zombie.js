@@ -28,6 +28,10 @@ class Zombie{
             this.maxHealth*healthBarScale,
             healthbarHeight
         )
+        if(this.health<0){
+            return
+          }
+      
         // actual health
         const off_fit={
             x:1,
@@ -80,4 +84,5 @@ class Zombie{
         }
         // here check whether to attack or not
     }
+
 }

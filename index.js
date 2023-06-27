@@ -59,7 +59,15 @@ const animate=()=>{
     zombieArray.forEach(zombie=>{
         // zombie.draw()
         zombie.update()
+
+
+
     })
+
+
+
+
+
 
     player.draw()
 
@@ -75,6 +83,12 @@ const animate=()=>{
     player.projectiles.forEach(projectile => {
         projectile.update();
         projectile.draw();
+        zombieArray.forEach(zombie=>{
+            if (Math.floor(projectile.position.x) > Math.floor(zombie.position.x) && Math.floor(projectile.position.x) < Math.floor(zombie.position.x + zombie.size.width)){
+            console.log("Hit", zombie.health )
+            zombie.health= zombie.health -  5;
+        }        
+        })
       });
 }
 animate()

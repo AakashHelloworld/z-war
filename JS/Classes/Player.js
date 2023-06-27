@@ -24,7 +24,7 @@ class Player {
   }
   shoot() {
     let direction = this.facingDirection;
-    const projectile = new Projectile(this.position.x, this.position.y, direction);
+    const projectile = new Projectile(this.position.x + 25, this.position.y + 10, direction);
     this.projectiles.push(projectile);
   }
 
