@@ -30,8 +30,8 @@ const ground={
 }
 
 
-const capsuleArray=[]
-const zombieArray=[]
+let capsuleArray=[]
+let zombieArray=[]
 const enemy=new ENEMYSPACESHIP()
 const player = new Player();
 const eliminatePassiveItems=(arr, property,eliminationValue)=>{

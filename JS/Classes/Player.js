@@ -7,7 +7,10 @@ function restartGame() {
   player.position.x = 200;
   player.position.y = 200;
   player.health = player.maxHealth;
+  enemy.health=enemy.maxHealth
   player.projectiles = [];
+  capsuleArray = [];
+  zombieArray = [];
   gameOver = false
 
 }
