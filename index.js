@@ -34,6 +34,19 @@ const capsuleArray=[]
 const zombieArray=[]
 const enemy=new ENEMYSPACESHIP()
 const player = new Player();
+const eliminatePassiveItems=(arr, property,eliminationValue)=>{
+    let i=0
+    while(true){
+        if(i>=arr.length){
+            break
+        }
+        if(arr[i][property]==eliminationValue){
+            arr.splice(i,1)
+            continue
+        }
+        i+=1
+    }
+}
 const animate=()=>{
     window.requestAnimationFrame(animate)
     c.fillStyle="white"
@@ -64,11 +77,6 @@ const animate=()=>{
 
     })
 
-
-
-
-
-
     player.draw()
 
     player.update()
@@ -81,14 +89,11 @@ const animate=()=>{
         player.velocity.x =0
     }
     player.projectiles.forEach(projectile => {
-        projectile.update();
         projectile.draw();
-        zombieArray.forEach(zombie=>{
-            if (Math.floor(projectile.position.x) > Math.floor(zombie.position.x) && Math.floor(projectile.position.x) < Math.floor(zombie.position.x + zombie.size.width)){
-            console.log("Hit", zombie.health )
-            zombie.health= zombie.health -  5;
-        }        
-        })
-      });
+        projectile.update();
+    });
+    // here after implementation of all logic we will eliminate all zombies, projectile that are passive in status
+    eliminatePassiveItems(zombieArray,"status",0)
+    eliminatePassiveItems(player.projectiles,"status",0)
 }
 animate()

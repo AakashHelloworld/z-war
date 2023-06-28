@@ -3,7 +3,9 @@ const distance=(p1,p2)=>{
     return d
 }
 class Zombie{
-    constructor({position,velocity,health}){
+    constructor({position,velocity,health,hitDamage}){
+        this.status=1   // status 1 means it is active ; similarly status 0 means passive
+        this.hitDamage=hitDamage    // how much health of player decreases after being hit by zombie
         this.position=position
         this.velocity=velocity
         this.size={
@@ -16,6 +18,13 @@ class Zombie{
         this.color="blue"
         this.maxHealth=health
         this.health=health
+    }
+    healthDecrease(value){
+        this.health-=value
+        if(this.health<0){
+            // if the health is less than zero the zombie should die
+            this.die()
+        }
     }
     showHealthBar(){
         const healthbarHeight=5
@@ -56,7 +65,7 @@ class Zombie{
     }
     attackPlayer(){
         // for now, let this be as basic as it is possible
-        player.health-=5
+        player.healthDecrease(this.hitDamage)
     }
     update(){
         this.draw()
@@ -77,12 +86,15 @@ class Zombie{
             // go left
             this.velocity.x=Math.abs(this.velocity.x)
         }
-
+        
+        // here check whether to attack or not
         if(distance(player.position,this.position)<=2){
             // if the separation between player and zombie is less than 2 pixels and the separation between player and ground is less than 0.1 (i.e the player is in ground), then zombie can attack the player
             this.attackPlayer()
         }
-        // here check whether to attack or not
     }
-
+    die(){
+        this.status=0   // we are setting the status as passive
+        // which we will later target in zombieArray to eliminate them
+    }
 }

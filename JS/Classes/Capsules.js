@@ -58,21 +58,6 @@ class Capsule{
                 this.zombieReleaseInitiated=true
             }
         }
-
-
-        // this.position.x+=this.velocity.x
-        // this.position.y+=this.velocity.y
-        // if(this.position.y+this.size.height+this.velocity.y+0.1>=ground.y){
-        //     // this.position.y=ground.y-this.size.height-0.1
-        //     this.velocity.y=0
-        //     this.velocity.x=0
-        //     this.groundTouched=true
-        // }else{
-        //     this.velocity.y+=gravity
-        //     if(this.groundTouched==false){
-        //         this.angle=Math.PI/2+Math.atan(this.velocity.y/this.velocity.x)
-        //     }
-        // }
     }
     deleteThisCapsule(){
         setTimeout(()=>{
@@ -90,7 +75,8 @@ class Capsule{
                     x:0.78,
                     y:0
                 },
-                health:50
+                health:50,
+                hitDamage:10
             }))
             // then we need to delete the capsule from the capsule array
             this.deleteThisCapsule()

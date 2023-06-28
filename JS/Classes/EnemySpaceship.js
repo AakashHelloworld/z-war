@@ -16,8 +16,39 @@ class ENEMYSPACESHIP{
        this.nextCapsuleTimer=Math.floor(Math.random()*100)+200
        this.capsuleThrowCounter=0
        this.noOfCapsuleThrown=0
+       this.maxHealth=10000
+       this.health=10000
+    }
+    showHealthBar(){
+        const healthbarHeight=15
+        const healthBarScale=0.03
+        // outer layer-->healthbar outline
+        c.fillStyle="blue"
+        c.fillRect(
+            canvasW-((this.maxHealth*healthBarScale)+10),
+            50,
+            this.maxHealth*healthBarScale,
+            healthbarHeight
+        )
+        if(this.health<0){
+            return
+        }
+      
+        // actual health
+        const off_fit={
+            x:3,
+            y:2
+        }
+        c.fillStyle="red"
+        c.fillRect(
+            canvasW-((this.maxHealth*healthBarScale)+10)+off_fit.x,
+            50+off_fit.y,
+            this.health*healthBarScale-2*off_fit.x,
+            healthbarHeight-2*off_fit.y
+        )
     }
     draw(){
+        this.showHealthBar()
         // enemy spaceShip
         c.fillStyle=this.color
         c.fillRect(
@@ -34,6 +65,13 @@ class ENEMYSPACESHIP{
             100,
             5
         )
+    }
+    healthDecrease(value){
+        this.health-=value
+        if(this.health<0){
+            // if the health is less than zero the zombie should die
+            this.die()
+        }
     }
     update(){
         this.position.x+=this.velocity.x
@@ -58,5 +96,8 @@ class ENEMYSPACESHIP{
             id:this.noOfCapsuleThrown+1
         }))
         this.noOfCapsuleThrown+=1
+    }
+    die(){
+        // i don't know what to do here
     }
 }
