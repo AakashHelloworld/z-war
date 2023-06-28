@@ -2,7 +2,10 @@
 let gameOver = false;
 function restartGame() {
   // Remove click event listener from canvas
-  canvas.removeEventListener('click', restartGame);
+  const button = document.querySelector('button');
+  if (button) {
+    document.body.removeChild(button);
+  }
   // Reset player position, health, and projectiles
   player.position.x = 200;
   player.position.y = 200;
@@ -109,22 +112,22 @@ class Player {
   }
   }
   die(){
-    console.log("player died. Game over")
-    // further code will be here. right now i don't have any idea what to do here
-    gameOver = true
-    const padding = 10;
-    const buttonWidth = 120 + 2 * padding;
-    const buttonHeight = 40 + 2 * padding;
-    const buttonX = canvasW / 2 - buttonWidth / 2;
-    const buttonY = canvasH / 2 - buttonHeight / 2;
-    c.fillStyle = 'blue';
-    c.fillRect(buttonX, buttonY, buttonWidth, buttonHeight);
-    c.fillStyle = 'white';
-    c.font = '24px sans-serif';
-    const text = 'Play Again';
-    const textWidth = c.measureText(text).width;
-    c.fillText(text, canvasW / 2 - textWidth / 2, canvasH / 2 + 10);
-    // Add click event listener to canvas
-    canvas.addEventListener('click', restartGame);
+    console.log("player died. Game over");
+    gameOver = true;
+    const button = document.createElement('button');
+    button.textContent = 'Play Again';
+    button.style.position = 'fixed';
+    button.style.left = '50%';
+    button.style.top = '50%';
+    button.style.transform = 'translate(-50%, -50%)';    
+    button.style.padding = '10px';
+    button.style.backgroundColor = 'blue';
+    button.style.color = 'white';
+    button.style.fontSize = '24px';
+    button.style.cursor = "pointer"
+    // Add click event listener to button
+    button.addEventListener('click', restartGame);
+    // Add button to page
+    document.body.appendChild(button);
   }
 }
