@@ -1,3 +1,17 @@
+
+let gameOver = false;
+function restartGame() {
+  // Remove click event listener from canvas
+  canvas.removeEventListener('click', restartGame);
+  // Reset player position, health, and projectiles
+  player.position.x = 200;
+  player.position.y = 200;
+  player.health = player.maxHealth;
+  player.projectiles = [];
+  gameOver = false
+
+}
+
 class Player {
   constructor() {
 
@@ -74,6 +88,7 @@ class Player {
 }
 
   update() {
+    if(!gameOver){
     this.position.x += this.velocity.x
     this.position.y += this.velocity.y
     this.sides.bottom = this.position.y + this.height;
@@ -89,8 +104,24 @@ class Player {
       this.facingDirection = 'left';
     }
   }
+  }
   die(){
     console.log("player died. Game over")
     // further code will be here. right now i don't have any idea what to do here
+    gameOver = true
+    const padding = 10;
+    const buttonWidth = 120 + 2 * padding;
+    const buttonHeight = 40 + 2 * padding;
+    const buttonX = canvasW / 2 - buttonWidth / 2;
+    const buttonY = canvasH / 2 - buttonHeight / 2;
+    c.fillStyle = 'blue';
+    c.fillRect(buttonX, buttonY, buttonWidth, buttonHeight);
+    c.fillStyle = 'white';
+    c.font = '24px sans-serif';
+    const text = 'Play Again';
+    const textWidth = c.measureText(text).width;
+    c.fillText(text, canvasW / 2 - textWidth / 2, canvasH / 2 + 10);
+    // Add click event listener to canvas
+    canvas.addEventListener('click', restartGame);
   }
 }

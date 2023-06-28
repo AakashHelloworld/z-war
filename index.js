@@ -49,6 +49,7 @@ const eliminatePassiveItems=(arr, property,eliminationValue)=>{
 }
 const animate=()=>{
     window.requestAnimationFrame(animate)
+    if(!gameOver){
     c.fillStyle="white"
     c.clearRect(0,0,canvas.width,canvas.height)
     c.fillRect(0,0,canvas.width,canvas.height)
@@ -72,9 +73,6 @@ const animate=()=>{
     zombieArray.forEach(zombie=>{
         // zombie.draw()
         zombie.update()
-
-
-
     })
 
     player.draw()
@@ -94,6 +92,6 @@ const animate=()=>{
     });
     // here after implementation of all logic we will eliminate all zombies, projectile that are passive in status
     eliminatePassiveItems(zombieArray,"status",0)
-    eliminatePassiveItems(player.projectiles,"status",0)
+    eliminatePassiveItems(player.projectiles,"status",0)}
 }
 animate()
