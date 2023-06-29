@@ -1,29 +1,9 @@
-
-let gameOver = false;
-function restartGame() {
-  // Remove click event listener from canvas
-  const button = document.querySelector('button');
-  if (button) {
-    document.body.removeChild(button);
-  }
-  // Reset player position, health, and projectiles
-  player.position.x = 200;
-  player.position.y = 200;
-  player.health = player.maxHealth;
-  enemy.health=enemy.maxHealth
-  player.projectiles = [];
-  capsuleArray = [];
-  zombieArray = [];
-  gameOver = false
-
-}
-
 class Player {
   constructor() {
 
     this.position = {
-      x: 200,
-      y: 200,
+      x: canvasW/2 + 45,
+      y: 560,
     }
     this.maxHealth=500
     this.health=500  // let the health of the player be 1000 , a number choosen without reason
@@ -45,13 +25,22 @@ class Player {
   }
   shoot() {
     let direction = this.facingDirection;
+    let {hitDamage, speed,fireRate, magzine, reloadTime, rang  } = guns[gunstatus]
+    if(magzine){
     const projectile = new Projectile({
       x: this.position.x + 25, 
       y: this.position.y + 10, 
       direction: direction, 
-      hitDamage: 10
+      hitDamage: hitDamage,
+      fireRate:fireRate,
+      magzine: magzine,
+      reloadTime:reloadTime,
+      rang:rang,
+      speed:speed
     });
     this.projectiles.push(projectile);
+    guns[gunstatus].magzine -= 1; 
+  }
   }
 
   draw() {
@@ -72,7 +61,7 @@ class Player {
     c.fillStyle="blue"
     c.fillRect(
         20,
-        50,
+        80,
         this.maxHealth*healthBarScale,
         healthbarHeight
     )
@@ -87,7 +76,7 @@ class Player {
     c.fillStyle="lightgreen"
     c.fillRect(
         20+off_fit.x,
-        50+off_fit.y,
+        80+off_fit.y,
         this.health*healthBarScale-2*off_fit.x,
         healthbarHeight-2*off_fit.y
     )

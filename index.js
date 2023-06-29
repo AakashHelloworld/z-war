@@ -7,46 +7,6 @@ const canvasH=document.querySelector(".main").getBoundingClientRect().height-20
 canvas.width=canvasW
 canvas.height=canvasH
 
-const key = {
-    ArrowLeft:{
-        pressed: false
-    },
-    ArrowRight:{
-        pressed: false
-    },
-    ArrowUp:{
-        pressed: false
-    }
-}
-
-const gravity=0.6
-
-const ground={
-    x:-100,
-    y:canvasH-100,
-    width:2000,
-    height:100,
-    normalReactionRedartadion:-0.2
-}
-
-
-let capsuleArray=[]
-let zombieArray=[]
-const enemy=new ENEMYSPACESHIP()
-const player = new Player();
-const eliminatePassiveItems=(arr, property,eliminationValue)=>{
-    let i=0
-    while(true){
-        if(i>=arr.length){
-            break
-        }
-        if(arr[i][property]==eliminationValue){
-            arr.splice(i,1)
-            continue
-        }
-        i+=1
-    }
-}
 const animate=()=>{
     window.requestAnimationFrame(animate)
     if(!gameOver){
@@ -64,12 +24,33 @@ const animate=()=>{
 
     enemy.draw()
     enemy.update()
-    // capsules iteration
+
+
+
+
+        let space = 5;
+        guns.map((data)=>{
+            if(data.name === guns[gunstatus].name){
+            c.fillStyle = 'blue';
+            }else{
+            c.fillStyle = 'green';
+            }
+            c.fillRect(space, 5, 160, 60);
+            c.fillStyle = 'white';
+            c.font = '24px sans-serif';
+            c.fillText(`${data.name} ${data.magzine}`, space+ 10, 40);
+            space = space + 160 + 5;
+            return;
+        })
+
+
+
 
     capsuleArray.forEach(capsule=>{
         capsule.draw()
         capsule.update()
     })
+
     zombieArray.forEach(zombie=>{
         // zombie.draw()
         zombie.update()
@@ -92,6 +73,7 @@ const animate=()=>{
     });
     // here after implementation of all logic we will eliminate all zombies, projectile that are passive in status
     eliminatePassiveItems(zombieArray,"status",0)
-    eliminatePassiveItems(player.projectiles,"status",0)}
+    eliminatePassiveItems(player.projectiles,"status",0)
+}
 }
 animate()

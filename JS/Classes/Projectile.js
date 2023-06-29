@@ -1,10 +1,14 @@
 class Projectile {
-    constructor({x, y, direction, hitDamage}) {
+    constructor({x, y, direction, hitDamage, fireRate, magzine, reloadTime, rang ,speed }) {
       this.position = { x: x, y: y };
       this.direction = direction;
-      this.speed = 10;
+      this.speed = speed;
       this.status=1
       this.hitDamage=hitDamage
+      this.fireRate = fireRate
+      this.magzine = magzine
+      this.reloadTime = reloadTime
+      this.rang = rang
     }
   
     update() {
@@ -13,7 +17,6 @@ class Projectile {
       }else if(this.direction == "up"){
         this.checkHitEnemySpaceship()
       }
-      
       if (this.direction === 'left') {
         this.position.x -= this.speed;
       } else if (this.direction === 'right') {
@@ -22,7 +25,7 @@ class Projectile {
         this.position.y -= this.speed;
       }
 
-      if(this.position.x>canvasW || this.position.x<0 || this.position.y<0){
+      if(this.position.x>canvasW -this.rang  || this.position.x<0+ this.rang || this.position.y<0){
         // if the projectile goes off the screen we willl set that projectile as passive later in index js it gets eliminated
         this.status=0
       }

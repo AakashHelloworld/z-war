@@ -1,7 +1,3 @@
-const distance=(p1,p2)=>{
-    const d=Math.sqrt(Math.pow(p1.x-p2.x,2)+Math.pow(p1.y-p2.y,2))
-    return d
-}
 class Zombie{
     constructor({position,velocity,health,hitDamage}){
         this.status=1   // status 1 means it is active ; similarly status 0 means passive
