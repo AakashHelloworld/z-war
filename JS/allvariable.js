@@ -23,19 +23,21 @@ let gameOver = false;
 let capsuleArray=[]
 let zombieArray=[]
 const guns = [
-
-    {
+    new Gun({
       name: "Refile",
-       fireRate: 1,
-       hitDamage:10,
-       magzine:7,
-       maxMagzine:7,
-       speed: 10,
-       reloadTime:1,
-       rang:0,
-       key:1
-    },
-    {
+      fireRate: 1,
+      hitDamage:10,
+      magzine:7,
+      maxMagzine:7,
+      speed: 15,
+      reloadTime:1,
+      rang:0,
+      key:1,
+      position:{
+        x:5,y:5
+      }
+    }),
+    new Gun({
       name: "Ak47",
       fireRate: 30,
       hitDamage:7,
@@ -44,22 +46,27 @@ const guns = [
       maxMagzine:30,
       reloadTime:5,
       rang: 0,
-      key:2
-
-    },
-    {
+      key:2,
+      position:{
+        x:170, y:5
+      }
+    }),
+    new Gun({
       name: 'Machine',
       fireRate: 100,
       hitDamage: 20,
       magzine:100,
-      speed: 5,
+      speed: 8,
       maxMagzine:100,
       reloadTime:20,
       rang:0,
-      key:3
-    }
+      key:3,
+      position:{
+        x:335,y:5
+      }
+    })
   ]
-let gunstatus = 0;
+let gunstatus = 0; // it is index-> allows to select any gun from the array
 
 
 

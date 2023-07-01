@@ -6,12 +6,11 @@ function restartGame() {
     }
     // Reset player position, health, and projectiles
     player.position.x = 200;
-    player.position.y = 560;
+    player.position.y = 200;
     player.health = player.maxHealth;
     enemy.health=enemy.maxHealth
     player.projectiles = [];
     capsuleArray = [];
     zombieArray = [];
     gameOver = false
-  
   }

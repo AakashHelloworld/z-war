@@ -7,6 +7,7 @@ const canvasH=document.querySelector(".main").getBoundingClientRect().height-20
 canvas.width=canvasW
 canvas.height=canvasH
 
+
 const animate=()=>{
     window.requestAnimationFrame(animate)
     if(!gameOver){
@@ -28,19 +29,9 @@ const animate=()=>{
 
 
 
-        let space = 5;
-        guns.map((data)=>{
-            if(data.name === guns[gunstatus].name){
-            c.fillStyle = 'blue';
-            }else{
-            c.fillStyle = 'green';
-            }
-            c.fillRect(space, 5, 160, 60);
-            c.fillStyle = 'white';
-            c.font = '24px sans-serif';
-            c.fillText(`${data.name} ${data.magzine}`, space+ 10, 40);
-            space = space + 160 + 5;
-            return;
+
+        guns.forEach((gun)=>{
+            gun.drawStatus()
         })
 
 

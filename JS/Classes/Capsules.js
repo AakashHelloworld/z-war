@@ -59,7 +59,7 @@ class Capsule{
         setTimeout(()=>{
             zombieArray.push(new Zombie({
                 position:{
-                    x:this.position.x,
+                    x:this.position.x+4,
                     y:this.position.y
                 },
                 velocity:{
@@ -68,7 +68,20 @@ class Capsule{
                 },
                 health:50,
                 hitDamage:10
-            }))
+            }),
+            new Zombie({
+                position:{
+                    x:this.position.x-4,
+                    y:this.position.y
+                },
+                velocity:{
+                    x:-0.78,
+                    y:0
+                },
+                health:50,
+                hitDamage:10
+            })
+            )
             // then we need to delete the capsule from the capsule array
             this.deleteThisCapsule()
         },this.zombieTimer)

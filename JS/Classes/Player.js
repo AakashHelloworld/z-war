@@ -3,7 +3,7 @@ class Player {
 
     this.position = {
       x: canvasW/2 + 45,
-      y: 560,
+      y: 200,
     }
     this.maxHealth=500
     this.health=500  // let the health of the player be 1000 , a number choosen without reason
