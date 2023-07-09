@@ -26,7 +26,7 @@ const guns = [
     new Gun({
       name: "Refile",
       fireRate: 1,
-      hitDamage:10,
+      hitDamage:50,
       magzine:7,
       maxMagzine:7,
       speed: 15,
@@ -53,12 +53,12 @@ const guns = [
     }),
     new Gun({
       name: 'Machine',
-      fireRate: 100,
+      fireRate: 50,
       hitDamage: 20,
-      magzine:100,
+      magzine:50,
       speed: 8,
-      maxMagzine:100,
-      reloadTime:20,
+      maxMagzine:50,
+      reloadTime:30,
       rang:0,
       key:3,
       position:{

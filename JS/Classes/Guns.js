@@ -40,10 +40,14 @@ class Gun{
     }
     reloadingAnimation(){
         c.fillStyle="red"
+        const off_fit={
+            x:5,
+            y:5
+        }
         c.fillRect(
-            this.position.x,
-            this.position.y+50,
-            (this.reloadingTimeRemaining/1000)/this.reloadTime*this.size.width,
+            this.position.x+off_fit.x,
+            this.position.y+45,
+            (this.reloadingTimeRemaining/1000)/this.reloadTime*this.size.width-off_fit.x,
             10
         )
     }

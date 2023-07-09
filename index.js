@@ -1,8 +1,8 @@
 const canvas=document.querySelector("#canvas")
 const c =canvas.getContext("2d")
 
-const canvasW=document.querySelector(".main").getBoundingClientRect().width-20
-const canvasH=document.querySelector(".main").getBoundingClientRect().height-20
+const canvasW=1080
+const canvasH=600
 
 canvas.width=canvasW
 canvas.height=canvasH
@@ -62,8 +62,9 @@ const animate=()=>{
         projectile.draw();
         projectile.update();
     });
-    // here after implementation of all logic we will eliminate all zombies, projectile that are passive in status
+    // here after implementation of all logic we will eliminate all zombies, projectile and capsules that are passive in status
     eliminatePassiveItems(zombieArray,"status",0)
+    eliminatePassiveItems(capsuleArray,"status",0)
     eliminatePassiveItems(player.projectiles,"status",0)
 }
 }

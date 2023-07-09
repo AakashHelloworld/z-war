@@ -13,7 +13,12 @@ class Projectile {
   
     update() {
       if(this.direction== "left" || this.direction == "right"){
-        this.checkHitZombie()
+        if(this.status==1){
+          this.checkHitZombie()
+        }
+        if(this.status==1){
+          this.checkHitCapsule()
+        }
       }else if(this.direction == "up"){
         this.checkHitEnemySpaceship()
       }
@@ -48,6 +53,16 @@ class Projectile {
         if (Math.floor(this.position.x) > Math.floor(zombieArray[i].position.x) && Math.floor(this.position.x) < Math.floor(zombieArray[i].position.x + zombieArray[i].size.width) && this.position.y>=zombieArray[i].position.y){
           // projectile has hit zombie
             zombieArray[i].healthDecrease(this.hitDamage)
+            this.deleteThisProjectile()
+            break
+        }        
+      }
+    }
+    checkHitCapsule(){
+      for(let i=0; i<capsuleArray.length; i++){
+        if (Math.floor(this.position.x) > Math.floor(capsuleArray[i].position.x) && Math.floor(this.position.x) < Math.floor(capsuleArray[i].position.x + capsuleArray[i].size.width) && this.position.y>=capsuleArray[i].position.y && this.position.y<=(capsuleArray[i].position.y+capsuleArray[i].size.height)){
+          // projectile has hit zombie
+            capsuleArray[i].healthDecrease(this.hitDamage)
             this.deleteThisProjectile()
             break
         }        

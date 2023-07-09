@@ -93,7 +93,9 @@ class ENEMYSPACESHIP{
                 x:this.position.x+this.size.width/2,
                 y:50
             },
-            id:this.noOfCapsuleThrown+1
+            id:this.noOfCapsuleThrown+1,
+            health:150,
+            maxZombieRelease:5
         }))
         this.noOfCapsuleThrown+=1
     }
